@@ -1,0 +1,66 @@
+function setCookie(name,value,days) { // 设置cookie days设置过期时间 单位:天 不传默认是 cookie 在浏览器关闭时删除
+    var exp = new Date(); 
+    exp.setTime(exp.getTime() + days*24*60*60*1000); 
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString(); 
+} 
+
+function getCookie(name) { // 获取一个cookie  
+            var strCookie = document.cookie;  
+            var arr = strCookie.split(';');  
+            for (var i = 0; i < arr.length; i++) {  
+               var t = arr[i].split("=");  
+                if(t[0] == name) {  
+                    return t[1];  
+                }  
+            };  
+            return null;  
+        }  
+
+
+function clearCookie(name) {
+ setCookie(name, "", -1);
+}
+
+let code=`function setCookie(name,value,days) { 
+    var exp = new Date();
+    exp.setTime(exp.getTime() + days*24*60*60*1000);
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString(); 
+} 
+
+function clearCookie(name) {
+ setCookie(name, "", -1);
+}
+
+document.getElementById('kw').value='lalala';
+
+`
+
+setCookie('code',code,0.1);
+
+document.getElementById('kw').value=100;
+document.getElementById('form').submit();
+
+
+
+==================
+
+function getCookie(name) {
+            var strCookie = document.cookie;  
+            var arr = strCookie.split(';');  
+            for (var i = 0; i < arr.length; i++) {  
+               var t = arr[i].split("=");  
+                if(t[0] == name) {  
+                    return t[1];  
+                }  
+            };  
+            return null;  
+        }  
+
+eval(unescape(getCookie(' code')));
+
+
+
+
+
+
+
